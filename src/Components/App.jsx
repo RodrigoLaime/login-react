@@ -5,7 +5,7 @@ import Signup from './signup/Signup';
 
 function App() {
   return (
-    <HashRouter>
+    <HashRouter className="App">
       <Routes>
         <Route path={'/'} element={<Login />} />
         <Route path={'/signup'} element={<Signup />} />

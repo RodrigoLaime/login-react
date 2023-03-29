@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import Validation from './LoginValidation.js'
+import './Login.css'
 
 function Login() {
   const [values, setValues] = useState({
@@ -21,7 +22,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className='container-singin'>
       <div>
         <h2>Sing-In</h2>
         <form action='' onSubmit={handleSubmit}>
