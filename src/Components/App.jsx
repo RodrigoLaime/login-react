@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path={'/'} element={<Login />} />
         <Route path={'/signup'} element={<Signup />} />
+        <Route path={'*'} element={<p>Not Fount</p>} />
       </Routes>
     </HashRouter>
   );
