@@ -23,28 +23,29 @@ function Login() {
 
   return (
     <div className='container-singin'>
-      <div>
+      <div className='container-signin--form'>
         <h2>Sing-In</h2>
-        <form action='' onSubmit={handleSubmit}>
-          <div className=''>
+        <p>Welcome to signin!</p>
+        <form action='' className='form' onSubmit={handleSubmit}>
+          <div className='form-email'>
             <label htmlFor="email"><strong>Email</strong></label>
             <input type="email" id='email' placeholder='Enter Email' name='email'
               onChange={handleInput} />
             {errors.email && <span className='text-red'>{errors.email}</span>}
           </div>
 
-          <div className=''>
+          <div className='form-password'>
             <label htmlFor="password"><strong>Password</strong></label>
             <input type="password" id='password' placeholder='Enter Password' name='password'
               onChange={handleInput} />
             {errors.password && <span className='text-red'>{errors.password}</span>}
           </div>
 
-          <button type='submit' className='btn-login'><strong>Log in</strong></button>
+          <button type='submit' className='btn-login'><strong>Sing in</strong></button>
 
           <p>You are agree to aour terms and polices</p>
 
-          <Link to='/signup' className='btn-account'>Create Account</Link>
+          <p>don't have an account? <Link to='/signup' className='btn-account'>Create Account</Link></p>
         </form>
       </div>
     </div>
