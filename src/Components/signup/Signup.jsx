@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from './SignupValidation.js';
 import axios from 'axios';
+import './Signup.css'
 
 function Signup() {
 
@@ -34,10 +35,11 @@ function Signup() {
   };
 
   return (
-    <div>
-      <div>
+    <div className='container-signup'>
+      <div className='container-signup--form'>
         <h2>Sign-Up</h2>
-        <form action='' onSubmit={handleSubmit}>
+        <p>Welcome!</p>
+        <form action='' className='form' onSubmit={handleSubmit}>
           <div className=''>
             <label htmlFor="name"><strong>Name</strong></label>
             <input type="text" id='name' placeholder='Enter Name' name='name' onChange={handleInput} />
@@ -56,7 +58,7 @@ function Signup() {
 
           <button type='submit' className='btn-login'><strong>Sign Up</strong></button>
           <p>You are agree to aour terms and polices</p>
-          <Link to='/' className='btn-account'>Login</Link>
+          <p>Do you already have an account? <Link to='/' className='btn-account'>Login</Link></p>
         </form>
       </div>
     </div>
