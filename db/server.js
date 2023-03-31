@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json())
 
-const db = mysql.createConnection({
+const dbConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'canterasoft',
@@ -22,11 +22,46 @@ app.post('/signup', (req, res) => {
     req.body.password,
   ]
 
-  db.query(sql, [values], (err, data) => {
+  dbConnection.query(sql, [values], (err, data) => {
     if (err) {
       return res.json('Error')
     }
     return res.json(data)
+  });
+})
+
+/* app.post('/login', (req, res) => {
+  const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?";
+
+  db.query(sql, [req.body.email, req.body.password], (err, data) => {
+    if (err) {
+      return res.json('Error')
+    }
+    if (data.length > 0) {
+      return res.json('success')
+    } else {
+      return res.json('faile')
+    }
+  });
+})
+ */
+
+app.post('/login', (req, res) => {
+
+  dbConnection.query("SELECT COUNT(*) AS total FROM login WHERE `email` = ? AND `password` = ?", [req.body.email, req.body.password], (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error del servidor');
+    }
+    if (data.length > 0) {
+      const total = data[0].total;
+      const contraseñaExiste = total > 0;
+      res.send({ contraseñaExiste });
+      return res.json('success')
+
+    } else {
+      return res.json('faile')
+    }
   });
 })
 
