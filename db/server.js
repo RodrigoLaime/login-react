@@ -30,10 +30,10 @@ app.post('/signup', (req, res) => {
   });
 })
 
-/* app.post('/login', (req, res) => {
+app.post('/login', (req, res) => {
   const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?";
 
-  db.query(sql, [req.body.email, req.body.password], (err, data) => {
+  dbConnection.query(sql, [req.body.email, req.body.password], (err, data) => {
     if (err) {
       return res.json('Error')
     }
@@ -44,9 +44,9 @@ app.post('/signup', (req, res) => {
     }
   });
 })
- */
 
-app.post('/login', (req, res) => {
+
+/* app.post('/login', (req, res) => {
 
   dbConnection.query("SELECT COUNT(*) AS total FROM login WHERE `email` = ? AND `password` = ?", [req.body.email, req.body.password], (err, data) => {
     if (err) {
@@ -63,7 +63,7 @@ app.post('/login', (req, res) => {
       return res.json('faile')
     }
   });
-})
+}) */
 
 app.listen(8081, () => {
   console.log('corriendo en el puerto 8081')
